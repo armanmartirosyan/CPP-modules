@@ -1,4 +1,4 @@
-NAME = megaphone
+NAME = phonebook
 FLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++
 
@@ -8,7 +8,7 @@ OBJ = $(patsubst %.cpp, %.o, $(SRC))
 
 all : $(NAME)
 
-$(NAME) : $(OBJ) Makefile
+$(NAME) : $(OBJ) Makefile Contact.hpp PhoneBook.hpp
 	$(CPP) $(FLAGS) $(OBJ) -o $(NAME)
 
 %.o : %.cpp
