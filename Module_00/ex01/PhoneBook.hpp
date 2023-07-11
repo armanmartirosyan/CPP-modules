@@ -15,7 +15,8 @@ class PhoneBook {
 		void	search(void);
 		int		getIndex(void);
 		int		getCount(void);
-		int		check_input(std::string &input);
+		int		check_input(std::string &input, int flag);
+		void	print(std::string str);
 	private:
 		int		_index;
 		int		_count;

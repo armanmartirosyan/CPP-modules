@@ -1,28 +1,25 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void){
-	this->_index = 0;
-	this->_count = 0;
-}
+PhoneBook::PhoneBook(void) {}
 
-PhoneBook::~PhoneBook(void){}
+PhoneBook::~PhoneBook(void) {}
 
-void	PhoneBook::setIndex(int index){
+void	PhoneBook::setIndex(int index) {
 	this->_index = index;
-	return ;
+	return;
 }
 
-void	PhoneBook::setCount(int count){
+void	PhoneBook::setCount(int count) {
 	this->_count = count;
-	return ;
+	return;
 }
 
 
-int	PhoneBook::getCount(void){
+int	PhoneBook::getCount(void) {
 	return (this->_count);
 }
 
-int PhoneBook::getIndex(void){
+int PhoneBook::getIndex(void) {
 	return (this->_index);
 }
 
@@ -35,44 +32,92 @@ Contact	PhoneBook::setContact(void)
 	if (index >= 8)
 		index = 0;
 	std::cout << "Enter your first name: ";
-	do {std::cin >> tmp;} while (!tmp.size());
-	std::cout <<std::endl;
-		contact.setFirstName(tmp);
+	do { std::cin >> tmp; } while (!tmp.size());
+	std::cout << std::endl;
+	contact.setFirstName(tmp);
 	std::cout << "Enter your last name: ";
-	do {std::cin >> tmp;} while (!tmp.size());
-	std::cout <<std::endl;
-		contact.setLastName(tmp);
+	do { std::cin >> tmp; } while (!tmp.size());
+	std::cout << std::endl;
+	contact.setLastName(tmp);
 	std::cout << "Enter your nick name: ";
-	do {std::cin >> tmp;} while (!tmp.size());
-	std::cout <<std::endl;
-		contact.setNickName(tmp);
+	do { std::cin >> tmp; } while (!tmp.size());
+	std::cout << std::endl;
+	contact.setNickName(tmp);
 	std::cout << "Enter your phone number: ";
-	do {std::cin >> tmp;} while (!tmp.size() || contact.setPhoneNumber(tmp));
-	std::cout <<std::endl;
+	do { std::cin >> tmp; } while (!tmp.size() || contact.setPhoneNumber(tmp));
+	std::cout << std::endl;
 	std::cout << "Enter your darkest secret: ";
-	do {std::cin >> tmp;} while (!tmp.size());
-	std::cout <<std::endl;
-		contact.setSecret(tmp);
+	do { std::cin >> tmp; } while (!tmp.size());
+	std::cout << std::endl;
+	contact.setSecret(tmp);
+	this->_contacts[index] = contact;
 	this->_index = index++;
 	return (contact);
 }
 
-int	PhoneBook::check_input(std::string &input){
-	for (int i = 0; input[i]; i++){
+int	PhoneBook::check_input(std::string& input, int flag) {
+	if (input.size() == 0) {
+		std::cout << "! Empty line !" << std::endl;
+		return (EXIT_FAILURE);
+	}
+	if (flag == 0) {
+		for (int i = 0; input[i]; i++) {
 			input[i] = tolower(input[i]);
 		}
 		if (input != "add" && input != "search" && input != "exit")
 			return (EXIT_FAILURE);
 		return (EXIT_SUCCESS);
+	}
+	else if (flag == 1) {
+		for (int i = 0; i < (int)input.size(); i++)
+			if (!isdigit(input[i]))
+				return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
 }
 
-void	PhoneBook::search(void){
+void	PhoneBook::print(std::string str) {
+	if (str.size() > 10)
+		std::cout << str.substr(0, 9) << ".";
+	else
+		std::cout << std::setw(10) << str;
+	return;
+}
+
+void	PhoneBook::search(void) {
 	std::string	input;
+	int			num;
 
-	std::cout << "how do you like to search contact? ";
+	std::cout << std::setw(11) << "Index|" << std::setw(11) << "Name|"
+		<< std::setw(11) << "Surname|" << std::setw(11) << "Nickname|" << std::endl;
+	for (int i = 0; i < this->_index + 1; i++) {
+		std::cout << std::setw(10) << i + 1 << "|";
+		print(this->_contacts[i].getFirstName());
+		std::cout << "|";
+		print(this->_contacts[i].getLastName());
+		std::cout << "|";
+		print(this->_contacts[i].getNickName());
+		std::cout << "|" << std::endl;
+	}
+	std::cout << "Enter the contact index: ";
 	do {
-		std::cout << std::endl << "Index | Name | Surname | Nickname" << std::endl;
 		std::cin >> input;
-	} while (!input.size());
-
+		if (!check_input(input, 1))
+			break;
+		std::cout << "Numeric characters required!" << std::endl;
+	} while (true);
+	if (input.size() > 2) {
+		std::cout << "No contacts with this index" << std::endl;
+	}
+	num = std::stoi(input);
+	if (num - 1 > this->_index ) {
+		std::cout << "No contacts with this index" << std::endl;
+	}
+	else {
+		std::cout << "Name     |" << this->_contacts[num - 1].getFirstName() << std::endl;
+		std::cout << "Surname  |" << this->_contacts[num - 1].getLastName() << std::endl;
+		std::cout << "Nickname |" << this->_contacts[num - 1].getNickName() << std::endl;
+		std::cout << "Number   |" << this->_contacts[num - 1].getPhoneNumber() << std::endl;
+		std::cout << "Secret   |" << this->_contacts[num - 1].getSecret() << std::endl;
+	}
 }

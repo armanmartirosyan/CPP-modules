@@ -1,53 +1,56 @@
 #include "Contact.hpp"
 
-Contact::Contact(void){}
+Contact::Contact(void) {}
 
-Contact::~Contact(void){}
+Contact::~Contact(void) {}
 
-void	Contact::setFirstName(std::string firstName){
+void	Contact::setFirstName(std::string firstName) {
 	this->_firstName = firstName;
-	return ;
+	return;
 }
 
-void	Contact::setLastName(std::string lastName){
+void	Contact::setLastName(std::string lastName) {
 	this->_lastName = lastName;
-	return ;
+	return;
 }
 
-void	Contact::setNickName(std::string nickName){
+void	Contact::setNickName(std::string nickName) {
 	this->_nickName = nickName;
-	return ;
+	return;
 }
 
-int	Contact::setPhoneNumber(std::string phoneNumber){
-	for(int i = 0; phoneNumber[i]; i++)
-		if (!isdigit(phoneNumber[i]))
+int	Contact::setPhoneNumber(std::string phoneNumber) {
+	for (int i = 0; phoneNumber[i]; i++)
+		if (!isdigit(phoneNumber[i])) {
+			std::cout << "Only numbers!" << std::endl;
+			std::cout << "Insert again: ";
 			return (EXIT_FAILURE);
+		}
 	this->_phoneNumber = phoneNumber;
 	return (EXIT_SUCCESS);
 }
 
-void	Contact::setSecret(std::string secret){
+void	Contact::setSecret(std::string secret) {
 	this->_secret = secret;
-	return ;
+	return;
 }
 
-std::string	Contact::getFirstName(void){
+std::string	Contact::getFirstName(void) {
 	return (this->_firstName);
 }
 
-std::string Contact::getLastName(void){
+std::string Contact::getLastName(void) {
 	return (this->_lastName);
 }
 
-std::string Contact::getNickName(void){
+std::string Contact::getNickName(void) {
 	return (this->_nickName);
 }
 
-std::string Contact::getPhoneNumber(void){
+std::string Contact::getPhoneNumber(void) {
 	return (this->_phoneNumber);
 }
 
-std::string Contact::getSecret(void){
+std::string Contact::getSecret(void) {
 	return (this->_secret);
 }
