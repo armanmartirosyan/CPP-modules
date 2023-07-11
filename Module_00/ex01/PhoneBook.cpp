@@ -1,6 +1,8 @@
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void) {}
+PhoneBook::PhoneBook(void) {
+	this->_count = 0;
+}
 
 PhoneBook::~PhoneBook(void) {}
 
@@ -23,7 +25,7 @@ int PhoneBook::getIndex(void) {
 	return (this->_index);
 }
 
-Contact	PhoneBook::setContact(void)
+void	PhoneBook::setContact(void)
 {
 	Contact 		contact;
 	static int		index;
@@ -52,7 +54,8 @@ Contact	PhoneBook::setContact(void)
 	contact.setSecret(tmp);
 	this->_contacts[index] = contact;
 	this->_index = index++;
-	return (contact);
+	if (this->_count != 8)
+		this->_count++;
 }
 
 int	PhoneBook::check_input(std::string& input, int flag) {
@@ -90,7 +93,7 @@ void	PhoneBook::search(void) {
 
 	std::cout << std::setw(11) << "Index|" << std::setw(11) << "Name|"
 		<< std::setw(11) << "Surname|" << std::setw(11) << "Nickname|" << std::endl;
-	for (int i = 0; i < this->_index + 1; i++) {
+	for (int i = 0; i < this->_count; i++) {
 		std::cout << std::setw(10) << i + 1 << "|";
 		print(this->_contacts[i].getFirstName());
 		std::cout << "|";
@@ -110,7 +113,7 @@ void	PhoneBook::search(void) {
 		std::cout << "No contacts with this index" << std::endl;
 	}
 	num = std::stoi(input);
-	if (num - 1 > this->_index ) {
+	if (num - 1 > this->_count ) {
 		std::cout << "No contacts with this index" << std::endl;
 	}
 	else {
