@@ -24,10 +24,10 @@ int	Contact::setPhoneNumber(std::string phoneNumber) {
 		if (!isdigit(phoneNumber[i])) {
 			std::cout << "Only numbers!" << std::endl;
 			std::cout << "Insert again: ";
-			return (EXIT_FAILURE);
+			return (1);
 		}
 	this->_phoneNumber = phoneNumber;
-	return (EXIT_SUCCESS);
+	return (0);
 }
 
 void	Contact::setSecret(std::string secret) {

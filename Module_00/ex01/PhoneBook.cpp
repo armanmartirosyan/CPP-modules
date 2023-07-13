@@ -1,4 +1,5 @@
 #include "PhoneBook.hpp"
+#include <stdlib.h>
 
 PhoneBook::PhoneBook(void) {
 	this->_count = 0;
@@ -61,22 +62,22 @@ void	PhoneBook::setContact(void)
 int	PhoneBook::check_input(std::string& input, int flag) {
 	if (input.size() == 0) {
 		std::cout << "! Empty line !" << std::endl;
-		return (EXIT_FAILURE);
+		return (1);
 	}
 	if (flag == 0) {
 		for (int i = 0; input[i]; i++) {
 			input[i] = tolower(input[i]);
 		}
 		if (input != "add" && input != "search" && input != "exit")
-			return (EXIT_FAILURE);
-		return (EXIT_SUCCESS);
+			return (1);
+		return (0);
 	}
 	else if (flag == 1) {
 		for (int i = 0; i < (int)input.size(); i++)
 			if (!isdigit(input[i]))
-				return (EXIT_FAILURE);
+				return (1);
 	}
-	return (EXIT_SUCCESS);
+	return (0);
 }
 
 void	PhoneBook::print(std::string str) {
@@ -113,7 +114,7 @@ void	PhoneBook::search(void) {
 		std::cout << "No contacts with this index" << std::endl;
 		return ;
 	}
-	num = std::stoi(input);
+	num = atoi(input.c_str());
 	if ( num < 1 || num > this->_count ) {
 		std::cout << "No contacts with this index" << std::endl;
 		return ;
