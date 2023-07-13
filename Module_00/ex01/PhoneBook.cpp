@@ -34,22 +34,22 @@ void	PhoneBook::setContact(void)
 	if (index >= 8)
 		index = 0;
 	std::cout << "Enter your first name: ";
-	do { std::cin >> tmp; } while (!tmp.size());
+	do { getline(std::cin, tmp); } while (!tmp.size());
 	std::cout << std::endl;
 	contact.setFirstName(tmp);
 	std::cout << "Enter your last name: ";
-	do { std::cin >> tmp; } while (!tmp.size());
+	do { getline(std::cin, tmp); } while (!tmp.size());
 	std::cout << std::endl;
 	contact.setLastName(tmp);
 	std::cout << "Enter your nick name: ";
-	do { std::cin >> tmp; } while (!tmp.size());
+	do { getline(std::cin, tmp); } while (!tmp.size());
 	std::cout << std::endl;
 	contact.setNickName(tmp);
 	std::cout << "Enter your phone number: ";
-	do { std::cin >> tmp; } while (!tmp.size() || contact.setPhoneNumber(tmp));
+	do { getline(std::cin, tmp); } while (!tmp.size() || contact.setPhoneNumber(tmp));
 	std::cout << std::endl;
 	std::cout << "Enter your darkest secret: ";
-	do { std::cin >> tmp; } while (!tmp.size());
+	do { getline(std::cin, tmp);} while (!tmp.size());
 	std::cout << std::endl;
 	contact.setSecret(tmp);
 	this->_contacts[index] = contact;
@@ -107,14 +107,16 @@ void	PhoneBook::search(void) {
 		std::cin >> input;
 		if (!check_input(input, 1))
 			break;
-		std::cout << "Numeric characters required!" << std::endl;
+		std::cout << "Wrong input!" << std::endl;
 	} while (true);
 	if (input.size() > 2) {
 		std::cout << "No contacts with this index" << std::endl;
+		return ;
 	}
 	num = std::stoi(input);
-	if (num - 1 > this->_count ) {
+	if ( num < 1 || num > this->_count ) {
 		std::cout << "No contacts with this index" << std::endl;
+		return ;
 	}
 	else {
 		std::cout << "Name     |" << this->_contacts[num - 1].getFirstName() << std::endl;
