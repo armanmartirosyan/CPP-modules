@@ -114,7 +114,7 @@ void	PhoneBook::search(void) {
 		std::cout << "No contacts with this index" << std::endl;
 		return ;
 	}
-	num = atoi(input.c_str());
+	num = std::atoi(input.c_str());
 	if ( num < 1 || num > this->_count ) {
 		std::cout << "No contacts with this index" << std::endl;
 		return ;

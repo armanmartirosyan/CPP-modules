@@ -9,6 +9,8 @@ int main() {
 		do {
 			std::cout << "Use following commands: ADD -- SEARCH -- EXIT;" << std::endl;
 			std::cin >> input;
+			if (std::cin.good() == false)
+				return (1);
 		} while (p.check_input(input, 0));
 		if (input == "add")
 			p.setContact();
