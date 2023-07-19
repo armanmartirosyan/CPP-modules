@@ -1,11 +1,17 @@
-#include "Zombie.hpp"
+#include <iostream>
 
 int main(void){
-	Zombie* horde = zombieHorde(15, "Franks");
+	std::string	str("HI THIS IS BRAIN");
+	std::string	*stringPTR = &str;
+	std::string	&stringREF = str;
 
-	for (int i = 0; i < 15; i++)
-		horde[i].announce();
-	delete[] horde;
-	horde = NULL;
+	std::cout << &str << std::endl;
+	std::cout << stringPTR << std::endl;
+	std::cout << &stringREF << std::endl;
+
+	std::cout << str << std::endl;
+	std::cout << *stringPTR << std::endl;
+	std::cout << stringREF << std::endl;
+
 	return (0);
 }
