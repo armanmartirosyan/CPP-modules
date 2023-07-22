@@ -2,13 +2,11 @@
 #include <iostream>
 #include <string>
 
-void	replaceString(std::string& original,const std::string& toFind, const std::string& replace){
-	size_t	pos = original.find(toFind);
-
+void	replaceString(std::string& original,const std::string& toFind, const std::string& replace, size_t pos){
 	if (pos == std::string::npos)
 		return ;
-		original = original.substr(0, pos) + replace + original.substr(pos + toFind.length());
-	replaceString(original, toFind, replace);
+	original = original.substr(0, pos) + replace + original.substr(pos + toFind.length());
+	replaceString(original, toFind, replace, original.find(toFind, pos + 1));
 	return ;
 }
 
@@ -32,7 +30,7 @@ int main(int argc, char **argv)
 		while (std::getline(inputFile, line)) {
 			pos = line.find(toFind);
 			if (pos != std::string::npos)
-				replaceString(line, toFind, replace);
+				replaceString(line, toFind, replace, pos);
 			outputFile << line << std::endl;
 		}
 		inputFile.close();
