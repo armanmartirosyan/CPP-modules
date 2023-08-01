@@ -57,7 +57,6 @@ bool	Fixed::operator!=(const Fixed& obj) const {
 	return (this->_fixed != obj._fixed);
 }
 
-
 Fixed	Fixed::operator+(const Fixed& obj)  const {
 	return (this->toFloat() + obj.toFloat());
 }
@@ -100,6 +99,7 @@ Fixed	Fixed::operator--(int) {
 	this->_fixed--;
 	return (tmp);
 }
+
 // Functions
 
 int	Fixed::getRawBits(void) const {

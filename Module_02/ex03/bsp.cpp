@@ -18,10 +18,13 @@ bool bsp(Point const a, Point const b, Point const c, Point const point) {
 	Fixed	mainTriangle = module (getTriangleArea(a, b, c));
 	Fixed	p1Triangle   = module (getTriangleArea(point, a, b));
 	Fixed	p2Triangle   = module (getTriangleArea(point, b, c));
-	Fixed	p3Triangle   = module (getTriangleArea(point, c, a));
+	Fixed	p3Triangle   = module (getTriangleArea(point, a, c));
 
-	// std::cout << "Main: " << mainTriangle.toFloat() << std::endl;
-	// std::cout << "Sum: " << p1Triangle + p2Triangle + p3Triangle << std::endl;
+	std::cout << "Main: " << mainTriangle.toFloat() << std::endl;
+	std::cout << "Sum: " << p1Triangle + p2Triangle + p3Triangle << std::endl;
 
-	return (mainTriangle == (p1Triangle + p2Triangle + p3Triangle));
+	return (mainTriangle <= (p1Triangle + p2Triangle + p3Triangle)
+			&& p1Triangle != 0
+			&& p2Triangle != 0
+			&& p3Triangle != 0 );
 }

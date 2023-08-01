@@ -7,8 +7,8 @@ Point::Point(const Point& obj) : _x(obj._x), _y(obj._y) {}
 Point::Point(const float x, const float y) : _x(x), _y(y) {}
 
 Point& Point::operator=(const Point& obj) {
-	(Fixed)this->_x = obj.getFixedX();
-	(Fixed)this->_y = obj.getFixedY();
+	(Fixed)this->_x = obj._x;
+	(Fixed)this->_y = obj._y;
 	return (*this);
 }
 
