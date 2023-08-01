@@ -15,7 +15,7 @@ Fixed::Fixed (const int num) {
 }
 
 Fixed::Fixed (const float num) {
-	this->_fixed = roundf(num * (1 << Fixed::_frac));
+	this->_fixed = (num * (1 << Fixed::_frac));
 }
 
 

@@ -1,30 +1,19 @@
-#include <cmath>
 #include "Point.hpp"
 
-static Fixed module(const Fixed num)
-{
-    if (num < 0)
-        return (num * -1);
-    return (num);
-}
-
-static Fixed getTriangleArea(Point const a, Point const b, Point const c) {
-	return ((a.getFixedX() * (b.getFixedY() - c.getFixedY()) + 
-			(b.getFixedX() * (c.getFixedY() - a.getFixedY())) + 
-			(c.getFixedX() * (a.getFixedY() - b.getFixedY()))) / 2);
+Fixed crossProduct(Point p1, Point p2, Point p3) {
+    return (p2.getFixedX() - p1.getFixedX())
+			* (p3.getFixedY() - p1.getFixedY())
+			- (p2.getFixedY() - p1.getFixedY())
+			* (p3.getFixedX() - p1.getFixedX());
 }
 
 bool bsp(Point const a, Point const b, Point const c, Point const point) {
-	Fixed	mainTriangle = module (getTriangleArea(a, b, c));
-	Fixed	p1Triangle   = module (getTriangleArea(point, a, b));
-	Fixed	p2Triangle   = module (getTriangleArea(point, b, c));
-	Fixed	p3Triangle   = module (getTriangleArea(point, a, c));
+    Fixed cross1(crossProduct(a, b, point));
+    Fixed cross2(crossProduct(b, c, point));
+    Fixed cross3(crossProduct(c, a, point));
 
-	std::cout << "Main: " << mainTriangle.toFloat() << std::endl;
-	std::cout << "Sum: " << p1Triangle + p2Triangle + p3Triangle << std::endl;
-
-	return (mainTriangle <= (p1Triangle + p2Triangle + p3Triangle)
-			&& p1Triangle != 0
-			&& p2Triangle != 0
-			&& p3Triangle != 0 );
+    if ((cross1 > 0 && cross2 > 0 && cross3 > 0) || 
+        (cross1 < 0 && cross2 < 0 && cross3 < 0))
+        return (true);
+    return (false);
 }
