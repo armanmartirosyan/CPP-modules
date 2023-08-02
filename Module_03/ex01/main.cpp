@@ -13,5 +13,6 @@ int main (void) {
 	Friday.attack("Vision");
 	Friday.beRepaired(15);
 	Vision.beRepaired(150);
+	Vision.guardGate();
 	return (0);
 }

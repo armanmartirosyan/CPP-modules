@@ -1,12 +1,12 @@
 #include "ClapTrap.hpp"
 
 // Constructors
-
 ClapTrap::ClapTrap(void) {
+	this->_name = "Unknown";
 	this->_health = 10;
 	this->_energy = 10;
 	this->_attackDamage = 0;
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default ClapTrap constructor called" << std::endl;
 	return ;
 }
 
@@ -15,7 +15,7 @@ ClapTrap::ClapTrap(const ClapTrap& rhs) {
 	this->_health = rhs.getHealth();
 	this->_energy = rhs.getEnergy();
 	this->_attackDamage = rhs.getAttackDamage();
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy ClapTrap constructor called" << std::endl;
 	return ;
 }
 
@@ -27,7 +27,7 @@ ClapTrap::ClapTrap(const std::string& name) {
 	this->_health = 10;
 	this->_energy = 10;
 	this->_attackDamage = 0;
-	std::cout << "Constructor with called" << std::endl;
+	std::cout << "Constructor ClapTrap called with parametrs" << std::endl;
 	return ;
 }
 
@@ -39,13 +39,13 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& rhs) {
 	this->_health = rhs.getHealth();
 	this->_energy = rhs.getEnergy();
 	this->_attackDamage = rhs.getAttackDamage();
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "ClapTrap copy assignment operator called" << std::endl;
 	return (*this);
 }
 
 // Destructor
 ClapTrap::~ClapTrap(void) {
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "Destructor ClapTrap called" << std::endl;
 	return ;
 }
 
@@ -92,6 +92,10 @@ void	ClapTrap::setAttackDamage(const unsigned int& attackDamage) {
 
 // Functions
 void	ClapTrap::attack(const std::string& target) {
+	if (this->getHealth() <= 0) {
+		std::cout << "ClapTrap " << this->getName() << " is dead!" << std::endl;
+		return ;
+	}
 	if (this->getEnergy() == 0) {
 		std::cout << "ClapTrap " << this->getName() << " has no energy to attack!" << std::endl;
 		return ;
@@ -104,6 +108,7 @@ void	ClapTrap::attack(const std::string& target) {
 
 void	ClapTrap::takeDamage(unsigned int amount) {
 	if (this->getHealth() - (int)amount <= 0) {
+		this->setHealth(0);
 		std::cout << "ClapTrap " << this->getName() <<  " died." << std::endl;
 		return ;
 	}
@@ -114,6 +119,10 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
+	if (this->getHealth() <= 0) {
+		std::cout << "ClapTrap " << this->getName() << " is dead!" << std::endl;
+		return ;
+	}
 	if (this->getEnergy() - 1 <= 0) {
 		std::cout << "ClapTrap " << this->getName();
 		std::cout <<  " has no energy to repair." << std::endl;
