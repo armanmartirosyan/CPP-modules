@@ -23,9 +23,10 @@ class ClapTrap {
 
 		// Getters
 		std::string		getName(void)			const;
-		int	getHealth(void)			const;
-		int	getEnergy(void)			const;
-		int	getAttackDamage(void)	const;
+		unsigned int	getHealth(void)			const;
+		unsigned int	getEnergy(void)			const;
+		unsigned int	getAttackDamage(void)	const;
+		void			printParams(void)		const;
 
 		// Setters
 		void	setName(const std::string&);
@@ -35,9 +36,9 @@ class ClapTrap {
 
 	protected:
 		std::string		_name;
-		int	_health;
-		int	_energy;
-		int	_attackDamage;
+		unsigned int	_health;
+		unsigned int	_energy;
+		unsigned int	_attackDamage;
 };
 
 #endif

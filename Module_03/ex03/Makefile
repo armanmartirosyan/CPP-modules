@@ -1,4 +1,4 @@
-NAME = scavTrap
+NAME = diamondTrap
 FLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++
 

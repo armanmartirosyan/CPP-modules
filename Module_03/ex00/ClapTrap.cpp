@@ -54,15 +54,15 @@ std::string ClapTrap::getName(void) const {
 	return (this->_name);
 }
 
-int	ClapTrap::getHealth(void) const {
+unsigned int	ClapTrap::getHealth(void) const {
 	return (this->_health);
 }
 
-int	ClapTrap::getEnergy(void) const {
+unsigned int	ClapTrap::getEnergy(void) const {
 	return (this->_energy);
 }
 
-int	ClapTrap::getAttackDamage(void) const {
+unsigned int	ClapTrap::getAttackDamage(void) const {
 	return (this->_attackDamage);
 }
 
@@ -107,7 +107,7 @@ void	ClapTrap::attack(const std::string& target) {
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
-	if (this->getHealth() - (int)amount <= 0) {
+	if (amount >= this->getHealth()) {
 		this->setHealth(0);
 		std::cout << "ClapTrap " << this->getName() <<  " died." << std::endl;
 		return ;
@@ -133,5 +133,11 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	std::cout << "ClapTrap " << this->getName() <<  " repaired himself ";
 	std::cout << amount << " points of health! ";
 	std::cout << "Now he has " << this->getHealth() << " amount of health." << std::endl;
+	return ;
+}
+
+void ClapTrap::printParams(void) const {
+    std::cout << this->_name <<": hitPoints(" << this->_health << ") : energyPoints("
+    << this->_energy<<") : attackDamage(" <<this->_attackDamage << ")" << std::endl;
 	return ;
 }

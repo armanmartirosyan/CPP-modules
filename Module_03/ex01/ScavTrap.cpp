@@ -1,19 +1,21 @@
 #include "ScavTrap.hpp"
 
 // Constructors
-ScavTrap::ScavTrap(void) {
-	this->_health = 100;
-	this->_energy = 50;
-	this->_attackDamage = 20;
+ScavTrap::ScavTrap(void){
+	this->setHealth(100);
+	this->setEnergy(100);
+	this->setAttackDamage(30);
 	std::cout << "Default ScavTrap constructor called" << std::endl;
+	return ;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& rhs) {
+ScavTrap::ScavTrap(const ScavTrap& rhs) : ClapTrap::ClapTrap() {
 	this->_name = rhs.getName();
 	this->_health = rhs.getHealth();
 	this->_energy = rhs.getEnergy();
 	this->_attackDamage = rhs.getAttackDamage();
 	std::cout << "Copy ScavTrap constructor called" << std::endl;
+	return ;
 }
 
 ScavTrap::ScavTrap(const std::string& name) {
@@ -21,9 +23,9 @@ ScavTrap::ScavTrap(const std::string& name) {
 		this->_name = "(empty)";
 	else
 		this->_name = name;
-	this->_health = 100;
-	this->_energy = 50;
-	this->_attackDamage = 20;
+	this->setHealth(100);
+	this->setEnergy(100);
+	this->setAttackDamage(30);
 	std::cout << "Constructor ScavTrap called with parametrs" << std::endl;
 	return ;
 }
@@ -46,7 +48,12 @@ ScavTrap::~ScavTrap(void) {
 	return ;
 }
 
+// Functions
 void	ScavTrap::attack(const std::string& target) {
+	if (this->getHealth() <= 0) {
+		std::cout << "ScavTrap " << this->getName() << " is dead!" << std::endl;
+		return ;
+	}
 	if (this->getEnergy() == 0) {
 		std::cout << "ScavTrap " << this->getName() << " has no energy to attack!" << std::endl;
 		return ;
