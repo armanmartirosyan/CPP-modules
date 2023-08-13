@@ -52,10 +52,10 @@ AMateria&	Character::getInv(size_t i) const {
 
 // Functinos
 void	Character::equip(AMateria* slot) {
-	static size_t	i = 0;
+	static size_t	i;
 
-	if (i < 4 && this->_inv[i] == NULL)
-		this->_inv[i] = slot;
+	if (i < 4 && this->_inv[i] == NULL && slot != NULL)
+		this->_inv[i++] = slot;
 	return ;
 }
 
@@ -66,6 +66,7 @@ void	Character::unequip(int i) {
 }
 
 void	Character::use(int idx, ICharacter& target) {
-	this->_inv[idx]->use(target);
+	if (this->_inv[idx] != NULL)
+		this->_inv[idx]->use(target);
 	return ;
 }

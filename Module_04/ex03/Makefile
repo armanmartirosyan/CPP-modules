@@ -1,5 +1,5 @@
-NAME = fight
-FLAGS = -Wall -Wextra -Werror -std=c++98
+NAME = game
+FLAGS =  -Wall -Wextra -Werror -std=c++98
 CPP = c++
 
 

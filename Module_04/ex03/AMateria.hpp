@@ -6,6 +6,8 @@
 # include <string>
 # include "ICharacter.hpp"
 
+# define INVLIMIT 4
+
 class AMateria {
 	public:
 		// Constructors

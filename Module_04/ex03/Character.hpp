@@ -4,7 +4,6 @@
 
 # include "AMateria.hpp"
 
-# define INVLIMIT 4
 
 class Character : public ICharacter {
 	public:
