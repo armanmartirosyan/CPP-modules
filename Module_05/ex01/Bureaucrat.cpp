@@ -93,6 +93,23 @@ void	Bureaucrat::setGrade(int grade) {
 	return ;
 }
 
+// Functions
+void	Bureaucrat::signForm(Form& form) const {
+	if (form.getIsSigned()) {
+		std::cout << "Form is already signed!" << std::endl;
+		return ;
+	}
+	if (this->getGrade() <= form.getSignRequired()) {
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+		form.setIsSigned(true);
+	}
+	else {
+		std::cout << this->getName() << " couldn't sign " << form.getName();
+		std::cout << " because grade was too low!" << std::endl;
+	}
+	return ;
+}
+
 // Exception class constructor
 Bureaucrat::GradeException::GradeException(const std::string& exception) {
 	this->_exception = exception;

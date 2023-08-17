@@ -4,6 +4,9 @@
 
 # include <iostream>
 # include <string>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
 	public:
@@ -27,6 +30,9 @@ class Bureaucrat {
 		// Setters
 		void	setName(const std::string&);
 		void	setGrade(int);
+
+		// Functions
+		void	signForm(Form&) const;
 
 		// Exception class
 		class GradeException : public std::exception
