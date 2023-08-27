@@ -48,24 +48,25 @@ void	identify(Base& p) {
 int main() {
 	Base* a = generate();
 
+	std::cout << "----------Random---------" << std::endl;
 	identify(a);
 	identify(*a);
 
 	{
 		Base* a = new A();
-
+		std::cout << "------------A------------" << std::endl;
 		identify(a);
 		identify(*a);
 	}
 	{
 		Base* b = new B();
-
+		std::cout << "------------B------------" << std::endl;
 		identify(b);
 		identify(*b);
 	}
 	{
 		Base* c = new C();
-
+		std::cout << "------------C------------" << std::endl;
 		identify(c);
 		identify(*c);
 	}

@@ -33,7 +33,7 @@ class ScalarConverter {
 		static bool	isDot;
 
 		// Variables
-		enum {CHAR, INT, DOUBLE, FLOAT, INF, OVERFLOW,  ERROR};
+		enum {CHAR, INT, DOUBLE, FLOAT, INF, ERROR};
 };
 
 #endif

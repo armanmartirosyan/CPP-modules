@@ -75,7 +75,8 @@ void	ScalarConverter::convertToDoubleOrFloat(std::string input) {
 void	ScalarConverter::convertToInf(std::string input) {
 	std::cout << "char: impossible" << std::endl;
 	std::cout << "int: impossible" << std::endl;
-	if (input[input.length() - 1] == 'f')
+	if (!input.compare("-inff") || !input.compare("+inff")
+		|| !input.compare("nanf") || !input.compare("inff"))
 		input.erase(input.length() - 1, 1);
 	std::cout << "float: " << input << "f" << std::endl;
 	std::cout << "double: " << input << std::endl;
@@ -99,6 +100,7 @@ int	ScalarConverter::parsingNumber(const std::string& input) {
 	bool	isInteger = true;
 	bool	isDouble = true;
 	bool	isSign = false;
+	int		dotIndex;
 
 	
 	if (input[i] == '+' || input[i] == '-') {
@@ -123,6 +125,7 @@ int	ScalarConverter::parsingNumber(const std::string& input) {
 	if (input[i++] != '.' || i == input.length())
 		return (ERROR);
 	isDot = true;
+	dotIndex = i - 1;
 	for (; i < input.length(); ++i) {
 		if (!std::isdigit(input[i])) {
 			isDouble = false;
