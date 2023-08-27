@@ -7,6 +7,7 @@
 # include <stdexcept>
 # include <cctype>
 # include <limits>
+# include <sstream>
 
 class ScalarConverter {
 	public:
@@ -23,9 +24,16 @@ class ScalarConverter {
 		// Functions
 		static int	parsing(const std::string&);
 		static int	parsingNumber(const std::string&);
+		static bool	checkOverflow(const std::string&, const bool);
+		static void	convertToChar(const std::string&);
+		static void	convetToInt(const std::string&);
+		static void	convertToDoubleOrFloat(std::string);
+		static void	convertToInf(std::string);
+
+		static bool	isDot;
 
 		// Variables
-		enum {CHAR, INT, DOUBLE, FLOAT, INF, ERROR};
+		enum {CHAR, INT, DOUBLE, FLOAT, INF, OVERFLOW,  ERROR};
 };
 
 #endif
