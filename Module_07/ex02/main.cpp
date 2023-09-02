@@ -50,5 +50,11 @@ int main(int, char**)
         std::cout << numbers[i]  << " ";
     }
     delete [] mirror;//
+    std::cout << std::endl;
+
+    const Array<int> arr(MAX_VAL);
+    // for (int i = 0; i < MAX_VAL; i++)
+    //     arr[i] = rand() % 750;
+    std::cout << "array[5] = " << arr[5] << std::endl;
     return 0;
 }

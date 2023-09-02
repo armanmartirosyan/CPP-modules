@@ -17,6 +17,7 @@ class Array {
 		// Operations
 		Array<T>&	operator=(const Array&);
 		T&			operator[](unsigned int);
+		const T&	operator[](unsigned int)	const;
 
 		// Functions
 		unsigned int	size(void)	const;
