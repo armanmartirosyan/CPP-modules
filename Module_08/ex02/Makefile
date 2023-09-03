@@ -1,4 +1,4 @@
-NAME = easyFind
+NAME = abomination
 CC = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
 RM = rm -rf
