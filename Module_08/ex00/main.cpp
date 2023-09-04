@@ -11,7 +11,7 @@ int main (void) {
 	for (size_t i = 0; i < MAX_VAL; i++)
 		myVector.push_back(i);
 	try {
-		itVector = easyfind(myVector, 16241);
+		itVector = easyfind(myVector, 25001);
 		std::cout << (*itVector) << std::endl;
 	} catch (const std::logic_error& e) {
 		std::cerr << e.what() << std::endl;
