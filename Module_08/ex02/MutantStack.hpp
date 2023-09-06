@@ -27,7 +27,6 @@ class MutantStack : public std::stack<T, Container> {
 		iterator				end(void);
 		reverse_iterator		rbegin(void);
 		reverse_iterator		rend(void);
-
 		const_iterator			begin(void)		const;
 		const_iterator			end(void)		const;
 		const_reverse_iterator	rbegin(void)	const;
