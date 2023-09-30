@@ -31,7 +31,7 @@ class BitcoinExchange
 		bool	checkDate(const std::string&)						const;
 		bool	checkValue(const std::string&)						const;
 	private:
-		std::map<std::string, float>	_csvValue;
+		std::map<std::string, double>	_csvValue;
 		
 };
 

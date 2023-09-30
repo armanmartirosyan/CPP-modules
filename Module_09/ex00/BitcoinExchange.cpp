@@ -2,8 +2,6 @@
 
 # define DATABASE "./data.csv"
 # define EROPEN "Error: could not open file."
-# define EINVVAL "Error: invalid value in line "
-# define EINVDATE "Error: invalid date in line "
 # define ENOTPOS "Error: not a positive number."
 # define ELNUM	"Error: too large a number."
 # define ESUITVAL "Error: No suitable value"
@@ -54,6 +52,7 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs) {
 	this->_csvValue = rhs._csvValue;
 	return (*this);
 }
+
 // Functions
 // Validation
 void	BitcoinExchange::removeWhitespace(std::string& line) const {
@@ -148,8 +147,8 @@ bool	BitcoinExchange::checkValue(const std::string& value) const {
 
 // Exchange bitcoin
 void	BitcoinExchange::exchangeBtc(const std::string& date, const std::string& value) {
-	std::map<std::string, float>::iterator	it = this->_csvValue.find(date);
-	float									valFloat = std::atof(value.c_str());
+	std::map<std::string, double>::iterator	it = this->_csvValue.find(date);
+	double									valFloat = std::atof(value.c_str());
 
 	if (valFloat < 0) {
 		std::cerr << ENOTPOS << std::endl;
@@ -182,8 +181,7 @@ void	BitcoinExchange::readInput(const std::string& name) {
 		throw (std::logic_error(EROPEN));
 	std::string								line;
 	std::string::size_type					found;
-	std::map<std::string, float>::iterator	it;
-	float									inputValue;
+	std::map<std::string, double>::iterator	it;
 
 	std::getline(inputFile, line);
 	while (std::getline(inputFile, line)) {
