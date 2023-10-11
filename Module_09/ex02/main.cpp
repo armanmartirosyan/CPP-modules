@@ -7,8 +7,6 @@ int main (int argc, char **argv) {
 		sequence += argv[i];
 		sequence += " ";
 	}
-
-	// std::cout << sequence << std::endl;
 	try {
 		PmergeMe::FordJohnson(sequence);
 	} catch (const std::exception& e) {
