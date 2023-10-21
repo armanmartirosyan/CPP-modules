@@ -22,7 +22,7 @@ class RPN {
 		void	performOP(const char);
 	
 	private:
-		std::stack<int>	_calc;
+		std::stack<double>	_calc;
 };
 
 #endif

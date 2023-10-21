@@ -1,7 +1,7 @@
 NAME = template
 CC = c++
 CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
-RM = rm -rf
+RM = rm -rf 
 
 SRC = ${wildcard *.cpp}
 OBJ = ${patsubst %.cpp, %.o, ${SRC}}

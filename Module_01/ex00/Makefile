@@ -2,7 +2,6 @@ NAME = zombie
 FLAGS = -Wall -Wextra -Werror -std=c++98
 CPP = c++
 
-
 SRC = $(wildcard *.cpp)
 OBJ = $(patsubst %.cpp, %.o, $(SRC))
 

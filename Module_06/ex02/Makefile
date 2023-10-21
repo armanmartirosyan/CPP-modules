@@ -1,6 +1,6 @@
 NAME = generate
 CC = c++
-CPPFLAGS = -std=c++98 -Wall -Wextra -Werror
+CPPFLAGS = -std=c++98 -Wall -Wextra -Werror 
 RM = rm -rf
 
 SRC = ${wildcard *.cpp}
