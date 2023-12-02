@@ -6,7 +6,7 @@ int main (int argc, char **argv) {
 		return (1);
 	}
 	BitcoinExchange btc;
-	btc.readInput(argv[1]);
+	btc.readInput(std::string(argv[1]));
 	
 	return (0);
 }

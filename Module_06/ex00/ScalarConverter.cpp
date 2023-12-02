@@ -39,7 +39,7 @@ void	ScalarConverter::convetToInt(const std::string& input) {
 	char	charValue = static_cast<char>(num);
 	
 	std::cout << "char: ";
-	if (isascii(num) && std::isprint(charValue))
+	if (isascii(num) && std::isprint(num))
 		std::cout << "\'" << charValue << "\'" << std::endl;
 	else
 		std::cout << "Non displayable" << std::endl;

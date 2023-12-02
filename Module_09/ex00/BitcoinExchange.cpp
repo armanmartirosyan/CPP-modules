@@ -175,7 +175,7 @@ void	BitcoinExchange::exchangeBtc(const std::string& date, const std::string& va
 void	BitcoinExchange::readInput(const std::string& name) {
 	std::ifstream inputFile;
 
-	inputFile.open(name);
+	inputFile.open(name.c_str());
 
 	if (!inputFile.is_open())
 		throw (std::logic_error(EROPEN));
